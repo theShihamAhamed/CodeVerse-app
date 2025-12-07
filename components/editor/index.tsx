@@ -27,6 +27,7 @@ import {
   InsertThematicBreak,
   diffSourcePlugin,
   MDXEditorMethods,
+  BlockTypeSelect,
 } from "@mdxeditor/editor";
 import { basicDark } from "cm6-theme-basic-dark";
 import { useTheme } from "next-themes";
@@ -98,6 +99,7 @@ const Editor = ({ value, editorRef, fieldChange }: Props) => {
                       <Separator />
 
                       <BoldItalicUnderlineToggles />
+                      <BlockTypeSelect />
                       <CodeToggle />
                       <Separator />
 

@@ -18,10 +18,10 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { api } from "@/lib/api";
 import { AnswerSchema } from "@/lib/validations";
+import { toast } from "sonner";
 
 const Editor = dynamic(() => import("@/components/editor"), {
   ssr: false,
@@ -57,8 +57,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
       if (result.success) {
         form.reset();
 
-        toast({
-          title: "Success",
+        toast.success("Success", {
           description: "Your answer has been posted successfully",
         });
 
@@ -66,10 +65,8 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           editorRef.current.setMarkdown("");
         }
       } else {
-        toast({
-          title: "Error",
+        toast.error("Error", {
           description: result.error?.message,
-          variant: "destructive",
         });
       }
     });
@@ -77,8 +74,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
 
   const generateAIAnswer = async () => {
     if (session.status !== "authenticated") {
-      return toast({
-        title: "Please log in",
+      return toast.error("Please log in", {
         description: "You need to be logged in to use this feature",
       });
     }
@@ -95,10 +91,8 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
       );
 
       if (!success) {
-        return toast({
-          title: "Error",
+        return toast.error("Error", {
           description: error?.message,
-          variant: "destructive",
         });
       }
 
@@ -111,18 +105,15 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
         form.trigger("content");
       }
 
-      toast({
-        title: "Success",
+      toast.success("Success", {
         description: "AI generated answer has been generated",
       });
     } catch (error) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description:
           error instanceof Error
             ? error.message
             : "There was a problem with your request",
-        variant: "destructive",
       });
     } finally {
       setIsAISubmitting(false);
@@ -136,7 +127,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           Write your answer here
         </h4>
         <Button
-          className="btn light-border-2 gap-1.5 rounded-md border px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
+          className="btn light-border-2 gap-1.5 rounded-md border px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500 cursor-pointer"
           disabled={isAISubmitting}
           onClick={generateAIAnswer}
         >
@@ -182,7 +173,11 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           />
 
           <div className="flex justify-end">
-            <Button type="submit" className="primary-gradient w-fit">
+            <Button
+              type="submit"
+              className="primary-gradient w-fit cursor-pointer"
+              disabled={isAnswering}
+            >
               {isAnswering ? (
                 <>
                   <ReloadIcon className="mr-2 size-4 animate-spin" />

@@ -15,13 +15,14 @@ const LeftSidebar = async () => {
 
   return (
     <section className="custom-scrollbar background-light900_dark200 light-border sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
-      <div className="flex flex-1 flex-col gap-6">
+      <div className="flex flex-1 flex-col gap-2">
         <NavLinks userId={userId} />
       </div>
 
       <div className="flex flex-col gap-3">
         {userId ? (
           <form
+            className="border-t border-gray-300 dark:border-gray-700 pt-4"
             action={async () => {
               "use server";
 
@@ -30,10 +31,10 @@ const LeftSidebar = async () => {
           >
             <Button
               type="submit"
-              className="base-medium w-fit !bg-transparent px-4 py-3"
+              className="group base-medium background-light700_dark300 w-full px-4 py-3 cursor-pointer border light-border-2 rounded-lg hover:background-light900_dark200"
             >
-              <LogOut className="size-5 text-black dark:text-white" />
-              <span className="text-dark300_light900 max-lg:hidden">
+              <LogOut className="size-5 text-black dark:text-white group-hover:text-red-500!" />
+              <span className="text-dark300_light900 max-lg:hidden group-hover:text-red-500!">
                 Logout
               </span>
             </Button>

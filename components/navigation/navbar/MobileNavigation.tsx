@@ -44,7 +44,7 @@ const MobileNavigation = async () => {
           />
 
           <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">
-            Dev<span className="text-primary-500">Flow</span>
+            Code<span className="text-primary-500">Verse</span>
           </p>
         </Link>
 

@@ -18,11 +18,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
-import { toast } from "@/hooks/use-toast";
 import { updateUser } from "@/lib/actions/user.action";
 import { ProfileSchema } from "@/lib/validations";
 
 import { Textarea } from "../ui/textarea";
+import { toast } from "sonner";
 
 interface Params {
   user: User;
@@ -50,17 +50,14 @@ const ProfileForm = ({ user }: Params) => {
       });
 
       if (result.success) {
-        toast({
-          title: "Success",
+        toast.success("Success", {
           description: "Your profile has been updated successfully.",
         });
 
         router.push(ROUTES.PROFILE(user._id));
       } else {
-        toast({
-          title: `Error (${result.status})`,
+        toast.error(`Error (${result.status})`, {
           description: result.error?.message,
-          variant: "destructive",
         });
       }
     });

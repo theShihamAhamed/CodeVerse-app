@@ -5,6 +5,7 @@ import LocalSearch from "@/components/search/LocalSearch";
 import ROUTES from "@/constants/routes";
 import { EMPTY_QUESTION } from "@/constants/states";
 import { getTagQuestions } from "@/lib/actions/tag.action";
+import { notFound } from "next/navigation";
 
 const Page = async ({ params, searchParams }: RouteParams) => {
   const { id } = await params;
@@ -18,6 +19,8 @@ const Page = async ({ params, searchParams }: RouteParams) => {
   });
 
   const { tag, questions, isNext } = data || {};
+
+  if (!success || !tag) notFound();
 
   return (
     <>

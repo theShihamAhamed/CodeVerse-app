@@ -15,7 +15,7 @@
   --color-dark-500: #101012;
 
   --color-light-400: #858ead;
-  --color-light-500: #7b8ec8;
+  --color-light-500: #9aa0b8;
   --color-light-700: #dce3f1;
   --color-light-800: #f4f6f8;
   --color-light-850: #fdfdfd;
@@ -90,7 +90,7 @@
 }
 
 @utility background-light700_dark300 {
-  @apply bg-light-700 dark:bg-dark-300;
+  @apply bg-light-700! dark:bg-dark-300!;
 }
 
 @utility background-light800_dark300 {
@@ -159,7 +159,7 @@
 }
 
 @utility light-border {
-  @apply border-light-800 dark:border-dark-300;
+  @apply border-light-800! dark:border-dark-300!;
 }
 
 @utility light-border-2 {
@@ -265,6 +265,9 @@
 @utility primary-gradient {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
 }
+@utility primary-gradient-hover {
+  background: linear-gradient(129deg, #ff8a33 0%, #ffb072 100%);
+}
 
 @utility dark-gradient {
   background: linear-gradient(
@@ -307,7 +310,7 @@
 }
 
 @utility card-wrapper {
-  @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100;
+  @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100 hover:bg-light-800! dark:hover:bg-dark-500/60!;
 }
 
 @utility btn {
@@ -327,15 +330,15 @@
 }
 
 @utility markdown {
-  @apply !max-w-full prose prose-p:my-2 prose-ol:my-0 prose-ul:my-0 dark:prose-p:text-light-700 dark:prose-ol:text-light-700 dark:prose-ul:text-light-500 dark:prose-strong:text-white dark:prose-headings:text-white prose-headings:text-dark-400 prose-h1:text-dark-300 prose-h2:text-dark-300 prose-p:text-dark-500 prose-ul:text-dark-500 prose-ol:text-dark-500;
+  @apply max-w-full! prose prose-p:my-2 prose-ol:my-0 prose-ul:my-0 dark:prose-p:text-light-700 dark:prose-ol:text-light-700 dark:prose-ul:text-light-500 dark:prose-strong:text-white dark:prose-headings:text-white prose-headings:text-dark-400 prose-h1:text-dark-300 prose-h2:text-dark-300 prose-p:text-dark-500 prose-ul:text-dark-500 prose-ol:text-dark-500;
 }
 
 @utility markdown-editor {
-  @apply prose !max-w-full prose-p:m-0 dark:prose-headings:text-white prose-headings:text-dark-400 prose-p:text-dark-500 dark:prose-p:text-light-700 prose-ul:text-dark-500 dark:prose-ul:text-light-700 prose-ol:text-dark-500 dark:prose-ol:text-light-700 dark:prose-strong:text-white prose-blockquote:text-dark-500 dark:prose-blockquote:text-light-700;
+  @apply prose max-w-full! prose-p:m-0 dark:prose-headings:text-white prose-headings:text-dark-400 prose-p:text-dark-500 dark:prose-p:text-light-700 prose-ul:text-dark-500 dark:prose-ul:text-light-700 prose-ol:text-dark-500 dark:prose-ol:text-light-700 dark:prose-strong:text-white prose-blockquote:text-dark-500 dark:prose-blockquote:text-light-700;
 }
 
 @utility tab {
-  @apply min-h-full! dark:bg-dark-400! bg-light-800! text-light-500! dark:data-[state=active]:bg-dark-300! data-[state=active]:bg-primary-100! data-[state=active]:text-primary-500!;
+  @apply min-h-full! dark:bg-dark-400! bg-light-800! text-light-500! hover:bg-light-700/60! dark:hover:bg-dark-300/60! dark:data-[state=active]:bg-dark-300! data-[state=active]:bg-primary-100! data-[state=active]:text-primary-500! cursor-pointer data-[state=active]:cursor-default;
 }
 
 @layer base {
@@ -383,6 +386,7 @@
   margin-top: -140px;
   padding-bottom: 140px;
   display: block;
+  pointer-events: none !important;
 }
 
 .mdxeditor-toolbar {
@@ -454,4 +458,79 @@ code {
 [data-bright-mode="light"]:not(:not(html.light [data-bright-mode="light"])) {
   display: grid !important;
   width: 100% !important;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: rgb(255, 255, 255);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+/*
+  ---break---
+*/
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+.custom-toast[data-type="error"] {
+  border: 1px solid #ff0000 !important;
 }

@@ -1,28 +1,32 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+// eslint.config.mjs
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 });
 
-const config = [
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+  // Ignore generated or vendor files
   {
-    ignores: ["components/ui/**/*"],
+    ignores: ["components/ui/**/*", "node_modules/**", ".next/**"],
   },
+
+  // Extend core and plugin configs
   ...compat.extends(
     "next/core-web-vitals",
-    "next/typescript",
-    "standard",
-    // "plugin:tailwindcss/recommended",
+    "plugin:@typescript-eslint/recommended",
+    //"plugin:tailwindcss/recommended",
     "prettier"
   ),
+
+  // Custom rules
   {
     rules: {
       "import/order": [
@@ -32,13 +36,10 @@ const config = [
             "builtin",
             "external",
             "internal",
-            ["parent", "sibling"],
-            "index",
+            ["parent", "sibling", "index"],
             "object",
           ],
-
           "newlines-between": "always",
-
           pathGroups: [
             {
               pattern: "@app/**",
@@ -46,25 +47,20 @@ const config = [
               position: "after",
             },
           ],
-
           pathGroupsExcludedImportTypes: ["builtin"],
-
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
+          alphabetize: { order: "asc", caseInsensitive: true },
         },
       ],
       "comma-dangle": "off",
     },
+    ignorePatterns: ["components/ui/**"],
   },
+
+  // TypeScript-specific overrides
   {
     files: ["**/*.ts", "**/*.tsx"],
-
     rules: {
       "no-undef": "off",
     },
   },
 ];
-
-export default config;

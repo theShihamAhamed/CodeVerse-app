@@ -36,9 +36,9 @@ const NavLinks = ({
             key={item.label}
             className={cn(
               isActive
-                ? "primary-gradient rounded-lg text-light-900"
+                ? "primary-gradient rounded-lg text-light-900 cursor-default"
                 : "text-dark300_light900",
-              "flex items-center justify-start gap-4 bg-transparent p-4"
+              "flex items-center justify-start gap-4 bg-transparent p-4 hover:background-light700_dark300"
             )}
           >
             <Image

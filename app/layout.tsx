@@ -5,8 +5,9 @@ import { ReactNode } from "react";
 
 import "./globals.css";
 import { auth } from "@/auth";
-import { Toaster } from "@/components/ui/toaster";
 import ThemeProvider from "@/context/Theme";
+import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -21,7 +22,7 @@ const spaceGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DevFlow",
+  title: "CodeVerse",
   description:
     "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
   icons: {
@@ -51,9 +52,14 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
             enableSystem
             disableTransitionOnChange
           >
+            <NextTopLoader
+              color="linear-gradient(270deg, #ff7000 0%, #e2995f 100%)"
+              showSpinner={false}
+              height={1}
+            />
             {children}
+            <Toaster />
           </ThemeProvider>
-          <Toaster />
         </body>
       </SessionProvider>
     </html>

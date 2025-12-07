@@ -23,7 +23,7 @@ const Navbar = async () => {
         />
 
         <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 max-sm:hidden">
-          Dev<span className="text-primary-500">Overflow</span>
+          Code<span className="text-primary-500">Verse</span>
         </p>
       </Link>
 

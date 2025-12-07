@@ -44,7 +44,7 @@ const Tags = async ({ searchParams }: RouteParams) => {
         data={tags}
         empty={EMPTY_TAGS}
         render={(tags) => (
-          <div className="mt-10 flex w-full flex-wrap gap-4">
+          <div className="mt-10 grid w-full gap-4 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
             {tags.map((tag) => (
               <TagCard key={tag._id} {...tag} />
             ))}
