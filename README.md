@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="public/images/logo.png" alt="CodeVerse Logo" width="80" />
   <h1>CodeVerse</h1>
   <p>A community-driven Q&A platform for developers — ask questions, share knowledge, and grow together.</p>
 
-  [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
-  [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb)](https://www.mongodb.com/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss)](https://tailwindcss.com/)
-  [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://code-verse-app.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb)](https://www.mongodb.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss)](https://tailwindcss.com/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://code-verse-app.vercel.app/)
 
-  **[Live Demo](https://code-verse-app.vercel.app/) · [GitHub Repository](https://github.com/theShihamAhamed/CodeVerse-app.git)**
+**[Live Demo](https://code-verse-app.vercel.app/) · [GitHub Repository](https://github.com/theShihamAhamed/CodeVerse-app.git)**
+
 </div>
 
 ---
@@ -44,73 +44,87 @@ Users can ask and answer programming questions, vote on content, bookmark questi
 ## Features
 
 ### Authentication
+
 - **Credential-based sign-up/sign-in** with bcrypt password hashing
 - **OAuth** via Google and GitHub (NextAuth.js v5)
 - Secure session management with JWT; middleware-protected routes
 
 ### Questions
+
 - Create, edit, and delete questions with a rich MDX editor
 - Tag questions with up to 3 relevant tags (auto-created if new)
 - Question-level filtering: Newest, Popular, Unanswered, Recommended
 - Paginated listing with server-side search
 
 ### Answers
+
 - Post and edit answers using the full-featured MDX editor
 - Sort answers by Newest, Oldest, or Most Popular
 - Each answer contributes to the author's reputation score
 
 ### AI-Powered Answer Generation
+
 - One-click AI answer generation using **Groq** (Llama 3.1 8B Instant)
 - Takes the question title, content, and the user's draft answer as context
 - Returns a well-structured markdown response with code blocks, headings, and lists
 
 ### Voting System
+
 - Upvote and downvote both questions and answers
 - Toggle votes: clicking the same vote again removes it; switching vote type is handled atomically via MongoDB transactions
 - Vote counts are reflected in real-time across the UI
 
 ### Collections (Bookmarks)
+
 - Save any question to a personal collection
 - Filter saved questions by Oldest, Most Voted, Most Viewed, Most Recent, Most Answered
 
 ### Tags
+
 - Browse all tags with question counts
 - Filter by A-Z, Recent, Oldest, or Popular
 - Clicking a tag shows all associated questions
 
 ### Global Search
+
 - Unified search bar in the navbar searches across Questions, Answers, Users, and Tags simultaneously
 - Results are filtered by type via quick-select chips
 
 ### Community
+
 - Browse all registered users with search and filter support
 - View any user's public profile
 
 ### User Profiles
+
 - Displays bio, location, portfolio link, and join date
 - Shows reputation score and earned badges (Gold, Silver, Bronze)
 - Tabbed view of the user's Questions and Answers
 - Top tags derived from the user's question activity
 
 ### Reputation & Badges
-| Action | Performer | Content Author |
-|---|---|---|
-| Upvote a post | +2 | +10 |
-| Downvote a post | -1 | -2 |
-| Post a question | — | +5 |
-| Post an answer | — | +10 |
-| Delete a question | — | -5 |
-| Delete an answer | — | -10 |
+
+| Action            | Performer | Content Author |
+| ----------------- | --------- | -------------- |
+| Upvote a post     | +2        | +10            |
+| Downvote a post   | -1        | -2             |
+| Post a question   | —         | +5             |
+| Post an answer    | —         | +10            |
+| Delete a question | —         | -5             |
+| Delete an answer  | —         | -10            |
 
 ### Personalized Recommendations
+
 - The "Recommended" feed analyzes a logged-in user's recent interaction history (views, upvotes, bookmarks, posts) to surface questions matching their interests
 
 ### Job Listings
+
 - Searches developer jobs via the **JSearch API** (RapidAPI)
 - Auto-detects the user's country via IP geolocation
 - Jobs display employment type, company, location, and a direct apply link
 
 ### UI/UX
+
 - Dark / Light / System theme switching (next-themes)
 - Top-progress-bar for navigation feedback (nextjs-toploader)
 - Toast notifications (Sonner)
@@ -121,29 +135,29 @@ Users can ask and answer programming questions, vote on content, bookmark questi
 
 ## Tech Stack
 
-| Category | Technology |
-|---|---|
-| **Framework** | Next.js 15 (App Router) |
-| **Language** | TypeScript 5 |
-| **UI Library** | React 19 |
-| **Styling** | Tailwind CSS 4, tailwind-merge, tailwindcss-animate |
+| Category                 | Technology                                                                   |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| **Framework**            | Next.js 15 (App Router)                                                      |
+| **Language**             | TypeScript 5                                                                 |
+| **UI Library**           | React 19                                                                     |
+| **Styling**              | Tailwind CSS 4, tailwind-merge, tailwindcss-animate                          |
 | **Component Primitives** | Radix UI (Alert Dialog, Avatar, Dialog, Dropdown, Label, Select, Slot, Tabs) |
-| **Component Library** | shadcn/ui |
-| **Icons** | Lucide React, Radix Icons, Devicon (CDN) |
-| **Rich Text Editor** | @mdxeditor/editor, next-mdx-remote, Bright (syntax highlighting) |
-| **Database** | MongoDB (Atlas) |
-| **ODM** | Mongoose 8 |
-| **Authentication** | NextAuth.js v5 (Credentials + OAuth) |
-| **Password Hashing** | bcryptjs |
-| **AI / LLM** | Vercel AI SDK (`ai`, `@ai-sdk/groq`) — Llama 3.1 8B Instant via Groq |
-| **Form Handling** | react-hook-form, @hookform/resolvers |
-| **Validation** | Zod |
-| **Date Formatting** | Day.js |
-| **URL State** | query-string |
-| **Slug Generation** | slugify |
-| **Logging** | Pino, pino-pretty |
-| **Linting / Formatting** | ESLint 9, Prettier |
-| **Deployment** | Vercel |
+| **Component Library**    | shadcn/ui                                                                    |
+| **Icons**                | Lucide React, Radix Icons, Devicon (CDN)                                     |
+| **Rich Text Editor**     | @mdxeditor/editor, next-mdx-remote, Bright (syntax highlighting)             |
+| **Database**             | MongoDB (Atlas)                                                              |
+| **ODM**                  | Mongoose 8                                                                   |
+| **Authentication**       | NextAuth.js v5 (Credentials + OAuth)                                         |
+| **Password Hashing**     | bcryptjs                                                                     |
+| **AI / LLM**             | Vercel AI SDK (`ai`, `@ai-sdk/groq`) — Llama 3.1 8B Instant via Groq         |
+| **Form Handling**        | react-hook-form, @hookform/resolvers                                         |
+| **Validation**           | Zod                                                                          |
+| **Date Formatting**      | Day.js                                                                       |
+| **URL State**            | query-string                                                                 |
+| **Slug Generation**      | slugify                                                                      |
+| **Logging**              | Pino, pino-pretty                                                            |
+| **Linting / Formatting** | ESLint 9, Prettier                                                           |
+| **Deployment**           | Vercel                                                                       |
 
 ---
 
@@ -329,17 +343,17 @@ CodeVerse uses **MongoDB** with **Mongoose** ODM. All models use timestamps (`cr
 
 All REST endpoints live under `app/api/`. Server Actions in `lib/actions/` handle the majority of mutations.
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET/POST` | `/api/auth/[...nextauth]` | NextAuth.js authentication handler |
-| `POST` | `/api/auth/signin-with-oauth` | OAuth sign-in — create or link account |
-| `POST` | `/api/ai/answers` | Generate an AI answer via Groq (Llama 3.1) |
-| `GET/POST` | `/api/accounts` | List / create accounts |
-| `GET/PUT/DELETE` | `/api/accounts/[id]` | Get / update / delete a specific account |
-| `GET` | `/api/accounts/provider` | Look up an account by provider + providerAccountId |
-| `GET/POST` | `/api/users` | List / create users |
-| `GET/PUT/DELETE` | `/api/users/[id]` | Get / update / delete a specific user |
-| `GET` | `/api/users/email` | Look up a user by email address |
+| Method           | Endpoint                      | Description                                        |
+| ---------------- | ----------------------------- | -------------------------------------------------- |
+| `GET/POST`       | `/api/auth/[...nextauth]`     | NextAuth.js authentication handler                 |
+| `POST`           | `/api/auth/signin-with-oauth` | OAuth sign-in — create or link account             |
+| `POST`           | `/api/ai/answers`             | Generate an AI answer via Groq (Llama 3.1)         |
+| `GET/POST`       | `/api/accounts`               | List / create accounts                             |
+| `GET/PUT/DELETE` | `/api/accounts/[id]`          | Get / update / delete a specific account           |
+| `GET`            | `/api/accounts/provider`      | Look up an account by provider + providerAccountId |
+| `GET/POST`       | `/api/users`                  | List / create users                                |
+| `GET/PUT/DELETE` | `/api/users/[id]`             | Get / update / delete a specific user              |
+| `GET`            | `/api/users/email`            | Look up a user by email address                    |
 
 ---
 
@@ -425,25 +439,33 @@ npm run lint     # Run ESLint
 ## Key Implementation Details
 
 ### Next.js App Router & Server Actions
+
 All data mutations (creating questions, voting, bookmarking) are implemented as **Next.js Server Actions** in `lib/actions/`. Each action goes through a central `action()` handler in `lib/handlers/action.ts` that validates the payload against a Zod schema and optionally checks for an authenticated session before executing.
 
 ### MongoDB Transactions
+
 Operations that touch multiple collections atomically — such as creating a question (which also creates/upserts tags and TagQuestion junction records), deleting a question (which cascades to answers, votes, and collections), and voting (which updates the Vote document and the counter on the Question/Answer) — all use **Mongoose transactions** to guarantee consistency.
 
 ### Recommendation Engine
+
 The "Recommended" feed works by:
+
 1. Fetching the logged-in user's last 50 interactions of type `view`, `upvote`, `bookmark`, or `post`.
 2. Collecting all tags from those interacted questions.
 3. Querying for unread questions (excluding already-interacted ones and the user's own) that share those tags, sorted by upvotes and views.
 
 ### Reputation System
+
 Every meaningful user action triggers `createInteraction()`, which records an `Interaction` document and calls `updateReputation()`. This uses `User.bulkWrite()` to atomically update both the performer's and the content author's reputation in a single database round-trip.
 
 ### AI Answer Generation
+
 The `/api/ai/answers` route receives the question title, MDX content, and an optional user draft. It uses the Vercel AI SDK (`generateText` with `@ai-sdk/groq`) to call the **Llama 3.1 8B Instant** model on Groq, instructing it to produce a concise, markdown-formatted response that incorporates the user's draft if it is correct.
 
 ### Error Handling
+
 A unified `handleError()` function in `lib/handlers/error.ts` normalises any error — whether a custom `RequestError` subclass (Validation, NotFound, Forbidden, Unauthorized), a `ZodError`, or an unknown runtime error — into a consistent `{ success: false, error: { message, details } }` shape for both API responses (`NextResponse.json`) and Server Action returns.
 
 ### Authentication Flow
+
 NextAuth.js v5 is configured in `auth.ts` with a `credentials` provider (email + bcrypt) and `google`/`github` OAuth providers. The `middleware.ts` file re-exports the NextAuth `auth` function directly as the middleware, protecting routes transparently. An `Account` model separates auth-provider details from the `User` model, allowing one user to have multiple linked providers.
